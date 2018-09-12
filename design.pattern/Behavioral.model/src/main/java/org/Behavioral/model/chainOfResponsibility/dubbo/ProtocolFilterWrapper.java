@@ -59,5 +59,17 @@ public class ProtocolFilterWrapper {
         }
         return last;
     }
+	
+	public static void main(String[] args) {
+		DubboInvoker<?> invoker  = new DubboInvoker();
+		Invoker<?> inv = ProtocolFilterWrapper.buildInvokerChain(invoker, "key", "group");
+		//调用链
+		inv.invoke(new Invocation() {
+			
+			public Invoker<?> getInvoker() {
+				return null;
+			}
+		});
+	}
 
 }
